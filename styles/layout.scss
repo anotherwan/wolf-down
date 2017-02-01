@@ -1,7 +1,31 @@
 body {
-  background-color: #EEE;
+  background-color: #fff;
 
   h1 {
     color: #244751;
+  }
+  nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+h2 {
+  text-align: center;
+}
+
+.container {
+
+  line-height: 2em;
+
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+
+  .how {
+    border: 2px solid black;
+    background-color: #f7eead;
   }
 }
