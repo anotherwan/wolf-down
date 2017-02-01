@@ -52,14 +52,24 @@ app.get("/register", (req, res) => {
 // })
 
 app.get("/login", (req, res) => {
-  res.render('login')
+  res.render('login');
 })
 
 // app.post("login", (req, res) => {
 //
 // })
 
-app.get("/menu")
+app.get("/menu", (req, res) => {
+  res.render('menu');
+})
+
+// app.post("/menu", (req, res) => {
+//
+// })
+
+app.get("/menu/cart", (req, res) => {
+  res.render('cart');
+})
 
 
 app.listen(PORT, () => {
