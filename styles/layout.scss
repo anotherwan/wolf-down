@@ -8,6 +8,16 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    position: fixed;
+  }
+  .parallax-container {
+  height: 400px;
+    .parallax {
+       img {
+        height: 850px;
+    }
+    }
+
   }
 }
 
@@ -15,18 +25,9 @@ h2 {
   text-align: center;
 }
 
-.container {
-
-  line-height: 2em;
-
-
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-
-  .how {
-    border: 2px solid black;
-    background-color: #f7eead;
-  }
+#show {
+  display: block;
+  background-repeat: no-repeat;
 }
+
 

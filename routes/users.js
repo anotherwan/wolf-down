@@ -3,17 +3,17 @@
 const express = require('express');
 const router  = express.Router();
 
-module.exports = (knex) => {
-  router.get("/menu/cart", (req, res) => {
-    knex
-      .select("*")
-      .from("dishes")
-      .from("orders")
-      .then((results) => {
-        console.log(results)
-        res.render('cart', {results});
-    });
-  });
+// module.exports = (knex) => {
+//   router.get("/menu/cart", (req, res) => {
+//     knex
+//       .select("*")
+//       .from("dishes")
+//       .from("orders")
+//       .then((results) => {
+//         console.log(results)
+//         res.render('cart', {results});
+//     });
+//   });
 
-  return router;
-}
+//   return router;
+// }

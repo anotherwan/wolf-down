@@ -3,34 +3,39 @@
 <% include ./partials/_html_head %>
 <body>
 <% include ./partials/_header %>
+  <button class="btn waves-effect waves-green" type="submit" name="action">Checkout Now</button>
 <h2> Menu </h2>
-<button class="btn waves-effect waves-light" type="submit" name="action">Checkout Now</button>
 
 
    <div class="container col s12">
       <ul class="collapsible">
         <li class="active">
           <div class="collapsible-header"><i class="mdi-av-web"></i>Insert Item Title Here</div>
-          <div class="collapsible-body"><p>Item Description Here - Price Here</p><button class="btn waves-effect waves-light" type="submit" name="action">Add</button></div>
+          <div class="collapsible-body"><p>Item Description Here - Price Here</p>
+          <a class="btn" onclick="Materialize.toast('Item Added To Cart!', 4000)">Add</a>
+      </div>
         </li>
         <li>
           <div class="collapsible-header"><i class="mdi-editor-format-align-justify"></i>Insert Item Title Here</div>
-          <div class="collapsible-body"><p>Item Description Here - Price Here</p><button class="btn waves-effect waves-light" type="submit" name="action">Add</button></div>
+          <div class="collapsible-body"><p>Item Description Here - Price Here</p>
+          <a class="btn" onclick="Materialize.toast('Item Added To Cart!', 4000)">Add</a>
         </li>
         <li>
           <div class="collapsible-header"><i class="mdi-av-play-shopping-bag"></i>Insert Item Title Here</div>
-          <div class="collapsible-body"><p>Item Description Here - Price Here</p><button class="btn waves-effect waves-light" type="submit" name="action">Add</button></div>
+          <div class="collapsible-body"><p>Item Description Here - Price Here</p>
+          <a class="btn" onclick="Materialize.toast('Item Added To Cart!', 4000)">Add</a>
         </li>
         <li>
           <div class="collapsible-header"><i class="mdi-editor-insert-comment"></i>Insert Item Title Here</div>
-          <div class="collapsible-body"><p>Item Description Here - Price Here</p><button class="btn waves-effect waves-light" type="submit" name="action"on>Add</button></div>
+          <div class="collapsible-body"><p>Item Description Here - Price Here</p>
+          <a class="btn" onclick="Materialize.toast('Item Added To Cart!', 4000)">Add</a>
         </li>
       </ul>
     </div>
 
   </div>
-  <button class="btn waves-effect waves-light" type="submit" name="action">Checkout Now</button>
 
+  <button class="btn waves-effect waves-green" type="submit" name="action">Checkout Now</button>
 
  </body>
 </html>
