@@ -5,12 +5,12 @@ const router  = express.Router();
 
 module.exports = (knex) => {
 
-  router.get("/", (req, res) => {
+  router.get("/menu", (req, res) => {
     knex
       .select("*")
-      .from("users")
+      .from("dishes")
       .then((results) => {
-        res.json(results);
+        res.render('menu');
     });
   });
 
