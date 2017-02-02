@@ -3,13 +3,49 @@
 <% include ./partials/_html_head %>
  <body>
  <% include ./partials/_header %>
-<h2>REGISTER</h2>
-   <form method ="POST" action="/register">
-     <label>Please input a valid e-mail address</label>
-     <input type="email" name="email" placeholder="Your e-mail address"></br>
-     <label>Password must be more than 7 characters</label>
-     <input type="password" name="password" placeholder="Password"></br>
-     <input type="submit" value="Register!">
-   </form>
+<h2>Register</h2>
+
+<div class="container col s12">
+ <div class="row">
+    <form class="col s12">
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="first_name" type="text" class="validate">
+          <label for="first_name">First Name</label>
+        </div>
+        <div class="input-field col s12">
+          <input id="last_name" type="text" class="validate">
+          <label for="last_name">Last Name</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate">
+          <label for="password">Password</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate">
+          <label for="email">Email</label>
+        </div>
+      </div>
+    </form>
+  </div>
+  </div>
+
+    <div class="row">
+
+      <div class="col s4">
+        Speedy Service
+      </div>
+      <div class="col s4">
+        Exclusive Discounts
+      </div>
+      <div class="col s4">
+        Don't wait in line
+      </div>
+
+    </div>
  </body>
 </html>
