@@ -8,16 +8,14 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    position: fixed;
   }
   .parallax-container {
   height: 400px;
     .parallax {
        img {
         height: 850px;
+      }
     }
-    }
-
   }
 }
 
