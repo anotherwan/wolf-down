@@ -4,13 +4,13 @@ const express = require('express');
 const router  = express.Router();
 
 module.exports = (knex) => {
-
-  router.get("/menu", (req, res) => {
+  router.get("/menu/cart", (req, res) => {
     knex
       .select("*")
-      .from("dishes")
+      .from("orders")
       .then((results) => {
-        res.render('menu');
+        console.log(results)
+        res.render('cart', {results});
     });
   });
 
