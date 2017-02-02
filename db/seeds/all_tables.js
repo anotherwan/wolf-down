@@ -27,9 +27,49 @@ exports.seed = function(knex, Promise) {
         })]).then(() => {
           return Promise.all([
             knex('dishes').insert({
-              id: 3,
+              id: 1,
               dish_name: 'spaghetti',
               dish_description: 'tomato sauce spaghetti with meatballs',
+              price: '9',
+              owner_id: 2
+            }),
+
+            knex('dishes').insert({
+              id: 2,
+              dish_name: 'tacos',
+              dish_description: 'beef tacos',
+              price: '5',
+              owner_id: 2
+            }),
+
+            knex('dishes').insert({
+              id: 3,
+              dish_name: 'gtchicken',
+              dish_description: 'chicken in general tao sauce',
+              price: '9',
+              owner_id: 2
+            }),
+
+            knex('dishes').insert({
+              id: 4,
+              dish_name: 'ramen',
+              dish_description: 'noodles in spicy soup',
+              price: '8',
+              owner_id: 2
+            }),
+
+            knex('dishes').insert({
+              id: 5,
+              dish_name: 'crab',
+              dish_description: 'appetizer crab claws',
+              price: '13',
+              owner_id: 2
+            }),
+
+            knex('dishes').insert({
+              id: 6,
+              dish_name: 'dessert',
+              dish_description: 'strawberries on oreos',
               price: '9',
               owner_id: 2
             }),
