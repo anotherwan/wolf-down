@@ -89,7 +89,10 @@ $(document).ready(function() {
     $(this).each(function(){
       console.log(sum += $(this).data("price"));
     })
+  })
 
+  $('.clear').on('click', function(){
+    $('.reg-form').trigger('reset');
   })
 })
 
