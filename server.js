@@ -84,6 +84,10 @@ app.get("/menu", (req, res) => {
   res.render('menu');
 })
 
+app.get("/menu/cart", (req, res) => {
+  res.render('menu/cart');
+})
+
 // app.post("/menu", (req, res) => {
 //
 // })
