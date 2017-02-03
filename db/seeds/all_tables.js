@@ -87,7 +87,7 @@ exports.seed = function(knex, Promise) {
           return Promise.all([
             knex('order_dishes').insert({
               quantity: 1,
-              dishes_id: 3,
+              dish_id: 3,
               order_id: 4
             })
           ])
