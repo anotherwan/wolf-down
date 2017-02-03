@@ -3,11 +3,28 @@
 <% include ./partials/_html_head %>
  <body>
  <% include ./partials/_header %>
-<h2>Register</h2>
+<h2>Why Register?</h2>
+
+<div class="container col s12">
+  <div class="row">
+    <div class="col s3 offset-s1">
+      <i class="material-icons large">fast_forward</i>
+      <p> Speedy Service</p>
+    </div>
+    <div class="col s3 offset-s1">
+      <i class="material-icons large">stars</i>
+      <p>Exclusive Discounts</p>
+    </div>
+    <div class="col s3 offset-s1">
+      <i class="material-icons large">thumb_up</i>
+      <p>Don't wait in line</p>
+    </div>
+  </div>
+</div>
 
 <div class="container col s12"">
  <div class="row">
-    <form class="col s12">
+    <form method="POST" action="/register" class="col s12">
       <div class="row">
         <div class="input-field col s12">
           <input id="first_name" type="text" class="validate">
@@ -30,21 +47,12 @@
           <label for="email">Email</label>
         </div>
       </div>
+      <a class="btn" onclick="Materialize.toast('Thanks For Registering!', 4000)">Register</a>
     </form>
   </div>
   </div>
 
-    <div class="row">
 
-      <div class="col s4">
-        Speedy Service
-      </div>
-      <div class="col s4">
-        Exclusive Discounts
-      </div>
-      <div class="col s4">
-        Don't wait in line
-      </div>
 
     </div>
  </body>
