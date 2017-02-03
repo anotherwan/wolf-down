@@ -52,7 +52,14 @@ app.post("/register", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-  res.render('login');
+  console.log('REQ PARAMS', req.query);
+  if (req.query.loginFailed) {
+    console.log('LOGIN FAILED TRUE')
+    res.render('login', {loginFailed: true});
+  } else {
+    console.log('LOGIN FAILED FALSE')
+    res.render('login', {loginFailed: false});
+  }
 })
 
 
@@ -65,11 +72,8 @@ app.post("/login", (req, res) => {
       if (req.body.email === results[0].email && req.body.password === results[0].password) {
         res.redirect('/')
       } else {
-        res.redirect('/login')
-        $document.ready(function() {
-          Materialize.toast('Please try again', 5000);
-        })
-      }
+        res.redirect('/login?loginFailed=true')
+           }
     })
   console.log('email:', req.body.email);
   console.log('password:', req.body.password);
