@@ -47,17 +47,33 @@ app.get("/register", (req, res) => {
   res.render("registration");
 })
 
-// app.post("/register", (req, res) => {
-//  TO DO: SEED DATA & EMAIL & REDIRECT TO HOME
-// })
+app.post("/register", (req, res) => {
+ // TO DO: SEED DATA & EMAIL & REDIRECT TO HOME
+})
 
 app.get("/login", (req, res) => {
   res.render('login');
 })
 
-// app.post("login", (req, res) => {
-//
-// })
+
+app.post("/login", (req, res) => {
+
+   // knex
+   //  .select('email', 'password')
+   //  .from('customers')
+   //  .then((results) => {
+   //    let login = results
+   //  })
+  console.log(req.body.email);
+  console.log(req.body.password);
+  console.log(results);
+  // if(req.body.email === database.customers.email) {
+  //   res.redirect('/')
+
+  // } else {
+
+  // }
+})
 
 app.get("/menu", (req, res) => {
   res.render('menu');
