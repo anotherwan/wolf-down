@@ -79,6 +79,10 @@ app.get("/menu", (req, res) => {
   res.render('menu');
 })
 
+app.get("/menu/cart", (req, res) => {
+  res.render('cart');
+})
+
 // app.post("/menu", (req, res) => {
 //
 // })
@@ -97,17 +101,6 @@ app.get("/menu/cart/cart", (req, res) => {
   })
 
 
-
-  // router.get('/menu/cart', (req, res) => {
-  //   knex('orders')
-  //   .join('order_dishes', 'orders.id', '=', 'order_dishes.order_id')
-  //   .join('dishes', 'dishes.id', '=', 'order_dishes.dishes_id')
-  //   .select('*')
-  //   .then((results) => {
-  //     console.log(results)
-  //     // res.render('menu', {results});
-  //   })
-  // });
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

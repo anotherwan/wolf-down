@@ -14,7 +14,7 @@
         <div class="collapsible-header"><%= results[item].dish_name %>
         </div>
         <div class="collapsible-body"><p><%= results[item].dish_description %></p> <p><%= results[item].price %></p>
-          <a class="btn" action="/menu/cart" onclick="Materialize.toast('<%= results[item].dish_name %> Added To Cart!', 4000)">Add</a>
+          <a class="btn add" action="/menu/cart" onclick="Materialize.toast('<%= results[item].dish_name %> Added To Cart!', 4000)">Add</a>
         </div>
       </li>
       <% } %>
