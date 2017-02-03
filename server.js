@@ -57,23 +57,24 @@ app.get("/login", (req, res) => {
 
 
 app.post("/login", (req, res) => {
-
-   // knex
-   //  .select('email', 'password')
-   //  .from('customers')
-   //  .then((results) => {
-   //    let login = results
-   //  })
-  console.log(req.body.email);
-  console.log(req.body.password);
-  console.log(results);
-  // if(req.body.email === database.customers.email) {
-  //   res.redirect('/')
-
-  // } else {
-
-  // }
+    knex
+    .select('email', 'password')
+    .from('customers')
+    .then((results) => {
+      console.log('results:',results);
+      if (req.body.email === results[0].email && req.body.password === results[0].password) {
+        res.redirect('/')
+      } else {
+        res.redirect('/login')
+        $document.ready(function() {
+          Materialize.toast('Please try again', 5000);
+        })
+      }
+    })
+  console.log('email:', req.body.email);
+  console.log('password:', req.body.password);
 })
+
 
 app.get("/menu", (req, res) => {
   res.render('menu');
