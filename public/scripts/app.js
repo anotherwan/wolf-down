@@ -47,27 +47,6 @@
 
 //   loadCart();
 
-"use strict";
-
-const express = require('express');
-const router  = express.Router();
-
-module.exports = (knex) => {
-  router.get("/menu/cart", (req, res) => {
-    knex
-      .select("*")
-    .from("dishes")
-    .then((results) => {
-      res.render('cart', {results});
-    });
-  });
-
-<<<<<<< HEAD
-  return router;
-
-}
-
-
   // $('.add').on('click', function(ev) {
   //   console.log(ev)
 
@@ -83,8 +62,7 @@ module.exports = (knex) => {
     //     $(".cart").empty()
     //     loadCart()
     //   })
-    //   .fail((error) => console.error(error))
-=======
+
 // function createHtml(dish){
 //   let html = `
 //      <section >
@@ -167,18 +145,17 @@ module.exports = (knex) => {
 var sum = 0;
 
 $(document).ready(function() {
-  // $('#sum').hide()
-  $('.add').on('click', function(ev){
-    $('.cart').append(`<ul><li>$${$(this).data("price")} ${$(this).data("name")}</li></ul>`)
-    $('#total').addClass("show-me")
-    $('.empty').empty().append(sum)
-    $(this).each(function(){
-      console.log(sum += $(this).data("price"));
-    })
+ // $('#sum').hide()
+ $('.add').on('click', function(ev){
+   $('.cart').append(`<ul><li>$${$(this).data("price")} ${$(this).data("name")}</li></ul>`)
+   $('#total').addClass("show-me")
+   $('.empty').empty().append(sum)
+   $(this).each(function(){
+     console.log(sum += $(this).data("price"));
+   })
 
-  })
+ })
 })
-
 //   $('.button').on('click', function() {
     // $('#sum').addClass("show-me");
     //.append(sum += parseInt($(this).data("price")));
