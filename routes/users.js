@@ -8,7 +8,6 @@ module.exports = (knex) => {
     knex
       .select("*")
       .from("dishes")
-      .from("orders")
       .then((results) => {
         console.log(results)
         res.render('cart', {results});
