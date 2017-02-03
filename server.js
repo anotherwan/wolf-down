@@ -7,7 +7,10 @@ const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
+
+
 const app         = express();
+
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -22,16 +25,28 @@ var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
 var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
 
 //require the Twilio module and create a REST client
-var client = require('twilio')(accountSid, authToken);
-client.messages.create({
-  to: '<ToNumber>',
-    from: '<FromNumber>',
-      body: '<BodyText>',
-      }, function (err, message) {
-        console.log(message.sid);
-      });
 
+var twilio = require('twilio');
+var client = new twilio.RestClient(accountSid, authToken);
 
+// client.messages.create({
+//     body: 'Hello from Node',
+//     // to: '+15149665034',  // Text this number
+//     from: '+16475572827' // From a valid Twilio number
+
+// }, function(err, message) {
+//     console.log(message.sid);
+// });
+
+app.get("/menu/cart/buy", (req, res) => {
+    client.messages.create({
+    body: 'Hello from Node',
+    to: '+15149665034',  // Text this number 4
+    from: '+16475572827' // From a valid Twilio number
+    }, function(err, message) {
+    console.log(message.sid);
+})
+});
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
