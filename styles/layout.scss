@@ -1,16 +1,12 @@
 body {
   background-color: #fff;
-
-  h1 {
-    color: #244751;
-  }
-  nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-  }
-  .parallax-container {
-  height: 400px;
+    nav {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+    }
+    .parallax-container {
+       height: 400px;
     .parallax {
        img {
         height: 850px;
@@ -28,4 +24,10 @@ h2 {
   background-repeat: no-repeat;
 }
 
+.subtotal {
+  display: none;
+}
 
+.show-me {
+  display: inline;
+}

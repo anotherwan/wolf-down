@@ -3,22 +3,24 @@
 <% include ./partials/_html_head %>
  <body>
  <% include ./partials/_header %>
-
+ <script>
+  if (<%= loginFailed %>) {Materialize.toast('Please login again', 4000)}
+ </script>
 <h2> Login</h2>
-    <form class="container col s12">
+    <form method="POST" action="/login" class="container col s12">
       <div class="row">
         <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
+          <input id="email" name="email" type="email" class="validate">
           <label for="email">Email</label>
         </div>
       </div>
       <div class="row">
         <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
+          <input id="password" name="password" type="password" class="validate">
           <label for="password">Password</label>
         </div>
       </div>
-      <a class="btn" onclick="Materialize.toast('Welcome back FIRSTNAME', 4000)">Login</a>
+      <input type="submit" class="btn" name="submit"></input>
     </form>
 
  </body>

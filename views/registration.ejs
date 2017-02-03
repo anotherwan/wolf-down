@@ -24,7 +24,7 @@
 
 <div class="container col s12"">
  <div class="row">
-    <form class="col s12">
+    <form method="POST" action="/register" class="col s12 reg-form">
       <div class="row">
         <div class="input-field col s12">
           <input id="first_name" type="text" class="validate">
@@ -47,7 +47,7 @@
           <label for="email">Email</label>
         </div>
       </div>
-      <a class="btn" onclick="Materialize.toast('Thanks For Registering!', 4000)">Register</a>
+      <a class="btn clear" onclick="Materialize.toast('Thanks For Registering!', 4000)">Register</a>
     </form>
   </div>
   </div>
