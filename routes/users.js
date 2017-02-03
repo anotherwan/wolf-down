@@ -15,20 +15,14 @@ module.exports = (knex) => {
     // })
   // });
 
-  router.get('/menu/cart', (req, res) => {
-  knex
-    .select('email', 'password')
-    .from('customers')
-    .then((results) => {
-      console.log(results)
-    })
-  })
+
 
   router.get("/menu", (req, res) => {
     knex
       .select("*")
       .from("dishes")
       .then((results) => {
+        console.log(results)
         res.render('menu', {results});
     });
   });
