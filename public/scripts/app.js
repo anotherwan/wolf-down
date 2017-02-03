@@ -145,6 +145,7 @@
 var sum = 0;
 
 $(document).ready(function() {
+<<<<<<< HEAD
  // $('#sum').hide()
  $('.add').on('click', function(ev){
    $('.cart').append(`<ul><li>$${$(this).data("price")} ${$(this).data("name")}</li></ul>`)
@@ -155,6 +156,21 @@ $(document).ready(function() {
    })
 
  })
+=======
+  // $('#sum').hide()
+  $('.add').on('click', function(ev){
+    $('.cart').append(`<ul><li>$${$(this).data("price")} ${$(this).data("name")}</li></ul>`)
+    $('#total').addClass("show-me")
+    $('.empty').empty().append(sum)
+    $(this).each(function(){
+      console.log(sum += $(this).data("price"));
+    })
+  })
+
+  $('.clear').on('click', function(){
+    $('.reg-form').trigger('reset');
+  })
+>>>>>>> master
 })
 //   $('.button').on('click', function() {
     // $('#sum').addClass("show-me");
