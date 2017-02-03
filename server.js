@@ -84,10 +84,31 @@ app.get("/menu", (req, res) => {
 //
 // })
 
-app.get("/menu/cart", (req, res) => {
-  res.render('cart');
-})
+app.get("/menu/cart/cart", (req, res) => {
+  console.log("71")
 
+  knex("dishes")
+  .join("order_dishes", "dishes.id" , "=" , "order_dishes.dishes_id")
+  .join("orders","orders.id", "=", "order_dishes.order_id")
+  .select('*')
+    .then((results) => {
+      res.json(results)
+
+    })
+  })
+
+
+
+  // router.get('/menu/cart', (req, res) => {
+  //   knex('orders')
+  //   .join('order_dishes', 'orders.id', '=', 'order_dishes.order_id')
+  //   .join('dishes', 'dishes.id', '=', 'order_dishes.dishes_id')
+  //   .select('*')
+  //   .then((results) => {
+  //     console.log(results)
+  //     // res.render('menu', {results});
+  //   })
+  // });
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
