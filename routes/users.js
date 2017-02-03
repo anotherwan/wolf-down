@@ -5,7 +5,7 @@ const router  = express.Router();
 
 module.exports = (knex) => {
   router.get("/menu", (req, res) => {
-    console.log('Here i AMMM')
+    // console.log('Here i AMMM')
     knex
       .select("*")
       .from("dishes")

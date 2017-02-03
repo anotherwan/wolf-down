@@ -3,7 +3,9 @@
 <% include ./partials/_html_head %>
  <body>
  <% include ./partials/_header %>
-
+ <script>
+  if (<%= loginFailed %>) {Materialize.toast('Please login again', 4000)}
+ </script>
 <h2> Login</h2>
     <form method="POST" action="/login" class="container col s12">
       <div class="row">
@@ -18,7 +20,7 @@
           <label for="password">Password</label>
         </div>
       </div>
-      <input type="submit" class="btn" name="submit" onclick="Materialize.toast('Welcome back FIRSTNAME', 4000)"></input>
+      <input type="submit" class="btn" name="submit"></input>
     </form>
 
  </body>

@@ -14,19 +14,26 @@
         <div class="collapsible-header"><%= results[item].dish_name %>
         </div>
         <div class="collapsible-body"><p><%= results[item].dish_description %></p> <p><%= results[item].price %></p>
+
           <a class="btn add" action="/menu/cart" onclick="Materialize.toast('<%= results[item].dish_name %> Added To Cart!', 4000)">Add</a>
+
+          <a class="btn add" data-price=<%= results[item].price %> data-name=<%= results[item].dish_name %> action="/menu/cart" >Add</a>
+
         </div>
       </li>
       <% } %>
     </ul>
   </div>
-    <div class="right col s6 m4 offset-m2">
-      <div class="container">
-        <section>
-          <!-- CART GOES HERE -->
-        </section>
-    </div>
-  </div>
+ <div class="right col s6 m4 offset-m2 cart">
+  <div class="container">
+    <section>
+        <!-- CART GOES HERE -->
+    <button id="sum" class="subtotal">Add me up</button>
+    <p class="subtotal" id="total">Total: $<span class="empty"></span> </p>
+</section>
+</div>
+</div>
+
   <div class="row">
     <div class="container col s12 m12">
       <br>
@@ -34,6 +41,11 @@
     </div>
   </div>
 </div>
+<!--
+<div class="cart">
+
+</div>
+ -->
 
 </body>
 </html>
