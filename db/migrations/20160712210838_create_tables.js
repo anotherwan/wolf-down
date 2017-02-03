@@ -33,8 +33,8 @@ exports.up = function(knex, Promise) {
   }),
  knex.schema.createTable('order_dishes', function (table) {
     table.integer('quantity').notNullable();
-    table.integer('dishes_id').references('dishes.id').notNullable();
-    table.integer('order_id').references('orders .id').notNullable();
+    table.integer('dish_id').references('dish.id').notNullable();
+    table.integer('order_id').references('orders.id').notNullable();
   })
   ]);
 };
