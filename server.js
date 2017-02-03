@@ -17,6 +17,22 @@ const knexLogger  = require('knex-logger');
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
+// Twilio Credentials
+var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
+var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
+
+//require the Twilio module and create a REST client
+var client = require('twilio')(accountSid, authToken);
+client.messages.create({
+  to: '<ToNumber>',
+    from: '<FromNumber>',
+      body: '<BodyText>',
+      }, function (err, message) {
+        console.log(message.sid);
+      });
+
+
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
