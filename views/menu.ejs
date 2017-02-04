@@ -4,7 +4,7 @@
 <body>
   <% include ./partials/_header %>
 <div class="row">
-  <h2 class="left red-text col offset-m2"> Menu </h2>
+  <h2 class="left red-text col offset-m2"> Menu </h2><h2 class="left red-text col offset m8">Cart</h2>
 </div>
 <div class="row">
   <div class="container">
@@ -20,28 +20,44 @@
       <% } %>
     </ul>
   </div>
- <div class="right col s6 m4 offset-m2 cart">
-  <div class="container">
-    <section>
-        <!-- CART GOES HERE -->
-    <button id="sum" class="subtotal">Add me up</button>
-    <p class="subtotal" id="total">Total: $<span class="empty"></span> </p>
-</section>
-</div>
-</div>
+ <div class="right col s6 m6">
+   <div class="container cart">
+      <table class="striped responsive-table bordered centered">
+        <thead>
+          <tr>
+            <th data-field="dish_name">Dish Name</th>
+            <th data-field="dish_price">Dish Price</th>
+            <th data-filed="dish quantity">Dish quantity</th>
+          </tr>
+        </thead>
 
+        <tbody>
+          <tr>
+            <td>dish1</td>
+            <td>dish1 price $ </td>
+            <td>dish1 quantity </td>
+          </tr>
+          <tr>
+            <td>dish2</td>
+            <td>dish2 price $ </td>
+            <td>dish2 quantity </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td>Total: $</td>
+          </tr>
+        </tbody>
+      </table>
+  </div>
+ </div>
+</div>
+<br>
   <div class="row">
     <div class="container col s12 m12">
-      <br>
-      <button class="btn waves-effect waves-green col offset-m6" type="submit" name="action">Checkout Now</button>
+        <button class="btn waves-effect waves-green  col offset-m8" type="submit">Checkout Now</button>
+      </div>
     </div>
   </div>
-</div>
-<!--
-<div class="cart">
-
-</div>
- -->
-
 </body>
 </html>
