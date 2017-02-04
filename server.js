@@ -48,6 +48,16 @@ app.get("/menu/cart/buy", (req, res) => {
 })
 });
 
+app.get
+app.get("/menu/cart/buy", (req, res) => {
+    client.messages.create({
+    body: 'res',
+    to: '+15149665034',  // Text this number 4
+    from: '+16475572827' // From a valid Twilio number
+    }, function(err, message) {
+    console.log(message.sid);
+})
+});
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
 //         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.

@@ -1,10 +1,23 @@
-<nav class="red accent-4">
-  <h5 class="center">Wolfdown</h5>
-    <ul>
-      <li class="active lighten-3"><a href=/> Home </a></li>
-      <li class="active lighten-3"><a href=/menu> Menu </a></li>
-      <li class="active lighten-3"><a href=/login> Login </a></li>
-      <li class="active lighten-3"><a href=/register> Register</a></li>
-      <li class="active lighten-3"><a href=/menu/cart> Cart</a></li>
-    </ul>
+<nav class="red darken-3">
+  <div class="container">
+    <div class="nav-wrapper">
+      <a href="/" class="valign-wrapper brand-logo left"><bold>Wu̇lfdau̇n</bold></a>
+      <ul class="right">
+        <li class="active lighten-3"><a href="/menu">Menu</a></li>
+          <% if (locals.email) { %>
+            <li><span class="white-text">Welcome,  <%= locals.email %>&nbsp;&nbsp;</span></li>
+            <li>
+              <form action="/logout" method ="POST">
+                <input class="lighten-4 white-text btn" type="submit" value="Logout">
+              </form>
+            </li>
+          <% } else { %>
+          </li><a class="btn white-text disabled" href="/login" name="login" value="Login">Login</a></li>
+          <li><a class="btn white-text diabled" href="/register" name="register" value="register">Register</a></li>
+          <% } %>
+      </ul>
+
+    </div>
+  </div>
+</div>
 </nav>
