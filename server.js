@@ -37,15 +37,21 @@ var client = new twilio.RestClient(accountSid, authToken);
 // }, function(err, message) {
 //     console.log(message.sid);
 // });
-
 app.get("/menu/cart/buy", (req, res) => {
+  res.render('purchase')
+})
+
+
+app.post("/menu/cart/buy", (req, res) => {
+  console.log("BODY", req);
     client.messages.create({
-    body: 'Hello from Node',
+    body: "HAY4",
     to: '+15149665034',  // Text this number 4
     from: '+16475572827' // From a valid Twilio number
     }, function(err, message) {
     console.log(message.sid);
 })
+    // res.response()
 });
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
