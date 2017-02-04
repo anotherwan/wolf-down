@@ -13,24 +13,25 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const cookieSession = require('cookie-session')
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
-// Twilio Credentials
-var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
-var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
-
-//require the Twilio module and create a REST client
-var client = require('twilio')(accountSid, authToken);
-client.messages.create({
-  to: '<ToNumber>',
-    from: '<FromNumber>',
-      body: '<BodyText>',
-      }, function (err, message) {
-        console.log(message.sid);
-      });
-
+// // Twilio Credentials
+// var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
+// var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
+//
+// //require the Twilio module and create a REST client
+// var client = require('twilio')(accountSid, authToken);
+// client.messages.create({
+//   to: '<ToNumber>',
+//     from: '<FromNumber>',
+//       body: '<BodyText>',
+//       }, function (err, message) {
+//         console.log(message.sid);
+//       });
+//
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -43,6 +44,10 @@ app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key']
+}))
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -86,13 +91,19 @@ app.post("/login", (req, res) => {
     .then((results) => {
       console.log('results:',results);
       if (req.body.email === results[0].email && req.body.password === results[0].password) {
+        req.session.email = results[0].email;
         res.redirect('/')
       } else {
         res.redirect('/login?loginFailed=true')
-           }
+      }
     })
+
   console.log('email:', req.body.email);
   console.log('password:', req.body.password);
+})
+
+app.get('/logout', (req, res) => {
+  req.session = null
 })
 
 
