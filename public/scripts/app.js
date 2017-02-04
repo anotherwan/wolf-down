@@ -1,10 +1,9 @@
-
 var sum = 0;
-
 $(document).ready(function() {
   var items = [];
  $('.add').on('click', function(ev){
-   $('.cart').append(`<ul><li>$${$(this).data("price")} ${$(this).data("name")}</li></ul>`)
+   $('.cart').append($(this).data("name"))
+   $('.price').append($(this).data("price"))
    $('#total').addClass("show-me")
    $('.empty').empty().append(sum)
    $(this).each(function(){
@@ -24,19 +23,19 @@ $(document).ready(function() {
    console.log(items)
  })
 
-})
-
  $('#buy-now').on('submit', function(e) {
   e.preventDefault()
   $.ajax({
+    method: "POST",
     url: "/menu/cart/buy",
-    data: items
+    data: "items"
   })
   .done(function(){
     alert("FOOD ORDER RECIEVED")
   })
  })
 
+<<<<<<< HEAD
 
 // $(document).ready(function() {
 //   // $('#sum').hide()
@@ -54,8 +53,20 @@ $(document).ready(function() {
   //   $('.reg-form').trigger('reset');
   // })
 
+=======
+ $('.clear').on('click', function(){
+  $('.reg-form').trigger('reset');
+})
+}) //documentready
+>>>>>>> master
 
 //   $('.button').on('click', function() {
-    // $('#sum').addClass("show-me");
-    //.append(sum += parseInt($(this).data("price")));
+//     $('#sum').addClass("show-me");
+//     .append(sum += parseInt($(this).data("price")));
 //   })
+// })
+// $('#total').addClass("show-me")
+// $('.empty').empty().append(sum)
+// $(this).each(function(){
+//   console.log(sum += $(this).data("price"));
+// })

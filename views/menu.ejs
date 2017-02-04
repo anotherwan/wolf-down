@@ -22,7 +22,7 @@
   </div>
 
  <div class="right col s6 m6">
-   <div class="container cart">
+   <div class="container ">
       <table class="striped responsive-table bordered centered">
         <thead>
           <tr>
@@ -32,26 +32,11 @@
           </tr>
         </thead>
 
- <div class="right col s6 m4 offset-m2 cart">
-  <div class="container">
-    <form id="buy-now" method="POST" action="/menu/cart/buy">
-        <!-- CART GOES HERE -->
-
-        <input name="items">
-        <input name="quantity">
-       <input name="total-order" type="submit">
-
-    <p class="subtotal" id="total">Total: $<span class="empty"></span> </p>
-</form >
-</div>
-</div>
-
-
         <tbody>
           <tr>
-            <td>dish1</td>
-            <td>dish1 price $ </td>
-            <td>dish1 quantity </td>
+            <td class="cart"></td><!-- Name-->
+            <td class="price">$ </td><!-- $price-->
+            <td class="quantity"> </td><!-- Quantity-->
           </tr>
           <tr>
             <td>dish2</td>
@@ -64,6 +49,7 @@
             <td>Total: $</td>
           </tr>
         </tbody>
+
       </table>
   </div>
  </div>
@@ -71,7 +57,11 @@
 <br>
   <div class="row">
     <div class="container col s12 m12">
-        <button class="btn waves-effect waves-green  col offset-m8" type="submit">Checkout Now</button>
+      <form id="buy-now" method="POST" action="/menu/cart/buy">
+        <!-- CART GOES HERE -->
+        <input name="total-order" type="submit">
+        <p class="subtotal" id="total">Total: $<span class="empty"></span> </p>
+      </form >
       </div>
     </div>
   </div>

@@ -16,6 +16,33 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+<<<<<<< HEAD
+=======
+
+
+
+// Load the logger first so all (static) HTTP requests are logged to STDOUT
+// 'dev' = Concise output colored by response status for development use.
+//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+app.use(morgan('dev'));
+
+// Log knex SQL queries to STDOUT as well
+app.use(knexLogger(knex));
+
+app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use("/styles", sass({
+  src: __dirname + "/styles",
+  dest: __dirname + "/public/styles",
+  debug: true,
+  outputStyle: 'expanded'
+}));
+app.use(express.static("public"));
+
+// Mount all resource routes
+app.use("/", usersRoutes(knex));
+>>>>>>> master
 
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
@@ -24,10 +51,9 @@ const usersRoutes = require("./routes/users");
 var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
 var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
 
-//require the Twilio module and create a REST client
-
 var twilio = require('twilio');
 var client = new twilio.RestClient(accountSid, authToken);
+<<<<<<< HEAD
 
 // client.messages.create({
 //     body: 'Hello from Node',
@@ -45,11 +71,22 @@ app.get("/menu/cart/buy", (req, res) => {
     from: '+16475572827' // From a valid Twilio number
     }, function(err, message) {
     console.log(message.sid);
+=======
+
+app.get("/menu/cart/buy", (req, res) => {
+  res.send("purchase")
+>>>>>>> master
 })
 });
 
+<<<<<<< HEAD
 app.get
 app.get("/menu/cart/buy", (req, res) => {
+=======
+
+app.post("/menu/cart/buy", (req, res) => {
+  console.log("BODY", req.body);
+>>>>>>> master
     client.messages.create({
     body: 'res',
     to: '+15149665034',  // Text this number 4
@@ -57,6 +94,7 @@ app.get("/menu/cart/buy", (req, res) => {
     }, function(err, message) {
     console.log(message.sid);
 })
+<<<<<<< HEAD
 });
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -80,6 +118,11 @@ app.use(express.static("public"));
 app.use("/", usersRoutes(knex));
 
 // Home page
+=======
+     res.send('Hey')
+});
+
+>>>>>>> master
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -102,7 +145,6 @@ app.get("/login", (req, res) => {
     res.render('login', {loginFailed: false});
   }
 })
-
 
 app.post("/login", (req, res) => {
     knex
@@ -130,6 +172,9 @@ app.get("/menu/cart", (req, res) => {
   res.render('cart');
 });
 
+app.listen(PORT, () => {
+  console.log("Example app listening on port " + PORT);
+});
 
 
 // app.post("/menu", (req, res) => {
@@ -150,7 +195,11 @@ app.get("/menu/cart", (req, res) => {
 //   })
 
 
+// client.messages.create({
+//     body: 'Hello from Node',
+//     to: '+15149665034',  // Text this number
+//     from: '+16475572827' // From a valid Twilio number
 
-app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
-});
+// }, function(err, message) {
+//     console.log(message.sid);
+// });
