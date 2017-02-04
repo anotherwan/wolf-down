@@ -83,7 +83,7 @@ var sum = 0;
 $(document).ready(function() {
   // $('#sum').hide()
   $('.add').on('click', function(ev){
-    $('.cart').append(`<ul><li>$${$(this).data("price")} ${$(this).data("name")}</li></ul>`)
+    $('.cart').append(`<tr><td>$${$(this).data("price")} ${$(this).data("name")}</tr></td>`)
     $('#total').addClass("show-me")
     $('.empty').empty().append(sum)
     $(this).each(function(){
@@ -101,7 +101,3 @@ $(document).ready(function() {
     // $('#sum').addClass("show-me");
     //.append(sum += parseInt($(this).data("price")));
 //   })
-
-
-
-
