@@ -155,6 +155,7 @@ $(document).ready(function() {
    })
 
  })
+ console.log(".cart")
 })
 
   // $('.clear').on('click', function(){

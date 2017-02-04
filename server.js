@@ -40,7 +40,7 @@ var client = new twilio.RestClient(accountSid, authToken);
 
 app.get("/menu/cart/buy", (req, res) => {
     client.messages.create({
-    body: 'Hello from Node',
+    body: 'res',
     to: '+15149665034',  // Text this number 4
     from: '+16475572827' // From a valid Twilio number
     }, function(err, message) {
