@@ -7,7 +7,10 @@ const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
+
+
 const app         = express();
+
 
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
@@ -18,6 +21,7 @@ const cookieSession = require('cookie-session')
 // Seperated Routes for each Resource
 const usersRoutes = require("./routes/users");
 
+<<<<<<< HEAD
 // // Twilio Credentials
 // var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
 // var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
@@ -32,7 +36,41 @@ const usersRoutes = require("./routes/users");
 //         console.log(message.sid);
 //       });
 //
+=======
+// Twilio Credentials
+var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
+var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
 
+//require the Twilio module and create a REST client
+
+var twilio = require('twilio');
+var client = new twilio.RestClient(accountSid, authToken);
+>>>>>>> 17f9fb952b4ccc0caba8e69615791ef9d9c6e216
+
+// client.messages.create({
+//     body: 'Hello from Node',
+//     // to: '+15149665034',  // Text this number
+//     from: '+16475572827' // From a valid Twilio number
+
+// }, function(err, message) {
+//     console.log(message.sid);
+// });
+app.get("/menu/cart/buy", (req, res) => {
+  res.render('purchase')
+})
+
+
+app.post("/menu/cart/buy", (req, res) => {
+  console.log("BODY", req);
+    client.messages.create({
+    body: "HAY4",
+    to: '+15149665034',  // Text this number 4
+    from: '+16475572827' // From a valid Twilio number
+    }, function(err, message) {
+    console.log(message.sid);
+})
+    // res.response()
+});
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -112,38 +150,30 @@ app.get("/menu", (req, res) => {
 })
 
 app.get("/menu/cart", (req, res) => {
-  res.render('menu/cart');
-})
+
+  res.render('cart');
+});
+
+
 
 // app.post("/menu", (req, res) => {
 //
 // })
 
-app.get("/menu/cart/cart", (req, res) => {
-  console.log("71")
+// app.get("/menu/cart/cart", (req, res) => {
+//   console.log("71")
 
-  knex("dishes")
-  .join("order_dishes", "dishes.id" , "=" , "order_dishes.dishes_id")
-  .join("orders","orders.id", "=", "order_dishes.order_id")
-  .select('*')
-    .then((results) => {
-      res.json(results)
+//   knex("dishes")
+//   .join("order_dishes", "dishes.id" , "=" , "order_dishes.dishes_id")
+//   .join("orders","orders.id", "=", "order_dishes.order_id")
+//   .select('*')
+//     .then((results) => {
+//       res.json(results)
 
-    })
-  })
+//     })
+//   })
 
 
-
-  // router.get('/menu/cart', (req, res) => {
-  //   knex('orders')
-  //   .join('order_dishes', 'orders.id', '=', 'order_dishes.order_id')
-  //   .join('dishes', 'dishes.id', '=', 'order_dishes.dishes_id')
-  //   .select('*')
-  //   .then((results) => {
-  //     console.log(results)
-  //     // res.render('menu', {results});
-  //   })
-  // });
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
