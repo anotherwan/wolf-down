@@ -16,61 +16,8 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
-const cookieSession = require('cookie-session')
-
-// Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
-
-<<<<<<< HEAD
-// // Twilio Credentials
-// var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
-// var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
-//
-// //require the Twilio module and create a REST client
-// var client = require('twilio')(accountSid, authToken);
-// client.messages.create({
-//   to: '<ToNumber>',
-//     from: '<FromNumber>',
-//       body: '<BodyText>',
-//       }, function (err, message) {
-//         console.log(message.sid);
-//       });
-//
-=======
-// Twilio Credentials
-var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
-var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
-
-//require the Twilio module and create a REST client
-
-var twilio = require('twilio');
-var client = new twilio.RestClient(accountSid, authToken);
->>>>>>> 17f9fb952b4ccc0caba8e69615791ef9d9c6e216
-
-// client.messages.create({
-//     body: 'Hello from Node',
-//     // to: '+15149665034',  // Text this number
-//     from: '+16475572827' // From a valid Twilio number
-
-// }, function(err, message) {
-//     console.log(message.sid);
-// });
-app.get("/menu/cart/buy", (req, res) => {
-  res.render('purchase')
-})
 
 
-app.post("/menu/cart/buy", (req, res) => {
-  console.log("BODY", req);
-    client.messages.create({
-    body: "HAY4",
-    to: '+15149665034',  // Text this number 4
-    from: '+16475572827' // From a valid Twilio number
-    }, function(err, message) {
-    console.log(message.sid);
-})
-    // res.response()
-});
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -82,10 +29,7 @@ app.use(knexLogger(knex));
 
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieSession({
-  name: 'session',
-  keys: ['key1', 'key']
-}))
+
 app.use("/styles", sass({
   src: __dirname + "/styles",
   dest: __dirname + "/public/styles",
@@ -97,7 +41,33 @@ app.use(express.static("public"));
 // Mount all resource routes
 app.use("/", usersRoutes(knex));
 
-// Home page
+// Seperated Routes for each Resource
+const usersRoutes = require("./routes/users");
+
+// Twilio Credentials
+var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
+var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
+
+var twilio = require('twilio');
+var client = new twilio.RestClient(accountSid, authToken);
+
+app.get("/menu/cart/buy", (req, res) => {
+  res.send("purchase")
+})
+
+
+app.post("/menu/cart/buy", (req, res) => {
+  console.log("BODY", req.body);
+    client.messages.create({
+    body: "HAY4",
+    to: '+15149665034',  // Text this number 4
+    from: '+16475572827' // From a valid Twilio number
+    }, function(err, message) {
+    console.log(message.sid);
+})
+     res.send('Hey')
+});
+
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -121,7 +91,6 @@ app.get("/login", (req, res) => {
   }
 })
 
-
 app.post("/login", (req, res) => {
     knex
     .select('email', 'password')
@@ -129,19 +98,13 @@ app.post("/login", (req, res) => {
     .then((results) => {
       console.log('results:',results);
       if (req.body.email === results[0].email && req.body.password === results[0].password) {
-        req.session.email = results[0].email;
         res.redirect('/')
       } else {
         res.redirect('/login?loginFailed=true')
-      }
+           }
     })
-
   console.log('email:', req.body.email);
   console.log('password:', req.body.password);
-})
-
-app.get('/logout', (req, res) => {
-  req.session = null
 })
 
 
@@ -154,6 +117,9 @@ app.get("/menu/cart", (req, res) => {
   res.render('cart');
 });
 
+app.listen(PORT, () => {
+  console.log("Example app listening on port " + PORT);
+});
 
 
 // app.post("/menu", (req, res) => {
@@ -174,7 +140,11 @@ app.get("/menu/cart", (req, res) => {
 //   })
 
 
+// client.messages.create({
+//     body: 'Hello from Node',
+//     to: '+15149665034',  // Text this number
+//     from: '+16475572827' // From a valid Twilio number
 
-app.listen(PORT, () => {
-  console.log("Example app listening on port " + PORT);
-});
+// }, function(err, message) {
+//     console.log(message.sid);
+// });
