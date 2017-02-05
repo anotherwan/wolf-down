@@ -7,6 +7,8 @@ const ENV         = process.env.ENV || "development";
 const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
+const cookieSession = require('cookie-session')
+
 
 
 const app         = express();
@@ -16,6 +18,8 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+const usersRoutes = require("./routes/users");
+
 
 
 
@@ -38,18 +42,22 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1', 'key']
+}))
+
 // Mount all resource routes
 app.use("/", usersRoutes(knex));
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
 
 // Twilio Credentials
-var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
-var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
+// const accountSid = require('.env')
+// const authToken = require('.env')
 
 var twilio = require('twilio');
-var client = new twilio.RestClient(accountSid, authToken);
+// var client = new twilio.RestClient(accountSid, authToken);
 
 app.get("/menu/cart/buy", (req, res) => {
   res.send("purchase")
@@ -69,11 +77,23 @@ app.post("/menu/cart/buy", (req, res) => {
 });
 
 app.get("/", (req, res) => {
-  res.render("index");
+  if (req.session.user_id) {
+    knex
+    .select('email')
+    .from('customers')
+    .where({id: req.session.user_id})
+    .then((results) => {
+      // console.log('RESULTSSSSS', results[0]);
+    res.render("index", {email: results[0].email})
+    })
+  } else {
+    // console.log('OTHER RESULT', req.session)
+  res.render("index", {email: null});
+  }
 });
 
 app.get("/register", (req, res) => {
-  res.render("registration");
+  res.render("registration", {email: null});
 })
 
 app.post("/register", (req, res) => {
@@ -81,35 +101,63 @@ app.post("/register", (req, res) => {
 })
 
 app.get("/login", (req, res) => {
-  console.log('REQ PARAMS', req.query);
+  // console.log('REQ PARAMS', req.query);
   if (req.query.loginFailed) {
-    console.log('LOGIN FAILED TRUE')
-    res.render('login', {loginFailed: true});
+    // console.log('LOGIN FAILED TRUE')
+    res.render('login', {loginFailed: true, email: null});
   } else {
-    console.log('LOGIN FAILED FALSE')
-    res.render('login', {loginFailed: false});
+    // console.log('LOGIN FAILED FALSE')
+    res.render('login', {loginFailed: false, email: null});
   }
 })
 
 app.post("/login", (req, res) => {
     knex
-    .select('email', 'password')
+    .select('id', 'email', 'password')
     .from('customers')
     .then((results) => {
       console.log('results:',results);
       if (req.body.email === results[0].email && req.body.password === results[0].password) {
+        req.session.user_id = results[0].id
+        console.log(req.session)
         res.redirect('/')
       } else {
         res.redirect('/login?loginFailed=true')
-           }
+      }
     })
-  console.log('email:', req.body.email);
-  console.log('password:', req.body.password);
+  // console.log('email:', req.body.email);
+  // console.log('password:', req.body.password);
 })
 
+app.post('/logout', (req, res) => {
+  req.session = null
+  res.redirect('/login')
+})
 
 app.get("/menu", (req, res) => {
-  res.render('menu');
+  if (req.session.user_id) {
+   knex
+    .select('*')
+    .from("dishes")
+    .then(function(dishes){
+        knex.select('email')
+          .from("customers")
+          .where({id: req.session.user_id})
+          .then(function(email) {
+            console.log('RESULTIS', email)
+            console.log('RESULT2IS', dishes)
+          res.render("menu", {email: email[0].email, dishes: dishes})
+          })
+    })
+  } else {
+    knex
+     .select('*')
+     .from("dishes")
+     .then(function(dishes){
+       res.render("menu", {email: null, dishes: dishes})
+     })
+
+  }
 })
 
 app.get("/menu/cart", (req, res) => {
