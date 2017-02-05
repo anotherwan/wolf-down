@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 //<td class="orange lighten-3">Total Items:            ${quant += 1}</td>
 
-    //$('.title').empty().append(`<ul><li> ${$(this).data("name")} $${$(this).data("price")}</li></ul>`)
+    $('.title').empty().append(`<ul><li> ${$(this).data("name")} $${$(this).data("price")}</li></ul>`)
 
     $('.sub').empty().append(`<li>Total Items: ${quant += 1}</li>
      <li>Total $${sum}</li>
@@ -45,8 +45,22 @@ $(document).ready(function() {
  $('.clear').on('click', function(){
   $('.reg-form').trigger('reset');
 })
+
 })
 
+   $('.parallax').parallax();
+}) //documentready
+//   $('.button').on('click', function() {
+//     $('#sum').addClass("show-me");
+//     .append(sum += parseInt($(this).data("price")));
+//   })
+// })
+// $('#total').addClass("show-me")
+// $('.empty').empty().append(sum)
+// $(this).each(function(){
+//   console.log(sum += $(this).data("price"));
+// })
+// 19e3fc554c740b1cc14d0b4fbdba0f251ee0cc29
 // function appendItemToOrder(order, newItem) {
 //   let ifItemFound = false;
 //   let newOrder = [];

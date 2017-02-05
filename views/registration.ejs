@@ -3,57 +3,61 @@
 <% include ./partials/_html_head %>
  <body>
  <% include ./partials/_header %>
-<h2>Why Register?</h2>
+<h2 class="center red-text text-darken-3"><strong>Why Register?</strong></h2>
 
-<div class="container col s12">
+<div class="container col m12">
   <div class="row">
-    <div class="col s3 offset-s1">
-      <i class="material-icons large">fast_forward</i>
-      <p> Speedy Service</p>
+    <div class="col m4 center">
+      <i class="material-icons large red-text text-darken-3">fast_forward</i>
+      <p class="red-text text-darken-3"> Speedy Service</p>
     </div>
-    <div class="col s3 offset-s1">
-      <i class="material-icons large">stars</i>
-      <p>Exclusive Discounts</p>
+    <div class="col m4 center">
+      <i class="material-icons large red-text text-darken-3">stars</i>
+      <p class="red-text text-darken-3">Exclusive Discounts</p>
     </div>
-    <div class="col s3 offset-s1">
-      <i class="material-icons large">thumb_up</i>
-      <p>Don't wait in line</p>
+    <div class="col m4 center">
+      <i class="material-icons large red-text text-darken-3">thumb_up</i>
+      <p class="red-text text-darken-3">Don't wait in line</p>
     </div>
   </div>
 </div>
 
-<div class="container col s12"">
- <div class="row">
-    <form method="POST" action="/register" class="col s12 reg-form">
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
+<div class="row">
+  <div class="container">
+    <div class="col m8 offset-m2">
+      <form method="POST" action="/register" class="reg-form">
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="first_name" type="text" class="validate">
+            <label for="first_name">Full Name</label>
+          </div>
         </div>
-        <div class="input-field col s12">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" class="validate">
+            <label for="email">Email</label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" class="validate">
+            <label for="password">Password</label>
+          </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="phone_number" type="text" class="validate">
+            <label for="phone_number">Phone Number</label>
+          </div>
         </div>
-      </div>
-      <a class="btn clear" onclick="Materialize.toast('Thanks For Registering!', 4000)">Register</a>
-    </form>
-  </div>
-  </div>
-
-
-
+        <div class="row">
+          <div class="col offset-m4">
+            <a class="btn red darken-3 clear" onclick="Materialize.toast('Thanks For Registering!', 4000)">Register</a>
+          </div>
+        </div>
+      </form>
     </div>
- </body>
+  </div>
+</div>
+</body>
 </html>
