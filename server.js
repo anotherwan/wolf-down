@@ -13,6 +13,7 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+
 const usersRoutes = require("./routes/users");
 
 
@@ -35,35 +36,58 @@ app.use("/styles", sass({
 }));
 app.use(express.static("public"));
 
-// Mount all resource routes
 
-
-// Seperated Routes for each Resource
 
 app.use("/", usersRoutes(knex));
-// Twilio Credentials
+
 var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
 var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
 
 var twilio = require('twilio');
 var client = new twilio.RestClient(accountSid, authToken);
 
+
 app.get("/menu/cart/buy", (req, res) => {
   res.send("purchase")
 })
 
+// SMS ORDER TO RESTAURANT
 app.post("/menu/cart/buy", (req, res) => {
-  console.log("BODY", req.body);
+  console.log("ITEMS", req.body.items);
+
+  for(var i =0; i <req.body.items.length; i++){
+   console.log("ID", req.body.items[i].id);
+   console.log("QUANTITY", req.body.items[i].quantity)
+
     client.messages.create({
-    body: "HAY4",
+    body: `" ${req.body.items[i].quantity} orders of  ${req.body.items[i].name}"`,
+    to: '+15149665034',  // Text this number 4
+    from: '+16475572827' // From a valid Twilio number
+
+   }, function(err, message) {
+    console.log(message.sid);
+  })
+  }
+     res.send('Hey')
+
+});
+
+//RESTAURANT REPLIES WITH SMS ETA and replies to the customer via sms- UPDATES SITE
+app.post('/sms', function (req, res) {
+  console.log("HEYY", req.body.Body)
+ client.messages.create({
+    body: `"Your order will be completed in ${req.body.Body} minutes"`,
     to: '+15149665034',  // Text this number 4
     from: '+16475572827' // From a valid Twilio number
     }, function(err, message) {
     console.log(message.sid);
-})
-     res.send('Hey')
-});
+    })
 
+  // const body = req.body.Body
+  res.set('Content-Type', 'text/plain')
+  res.send(`You sent: ${req.body.Body} to Express`)
+
+})
 app.get("/", (req, res) => {
   res.render("index");
 });
@@ -75,7 +99,6 @@ app.get("/register", (req, res) => {
 app.post("/register", (req, res) => {
  // TO DO: SEED DATA & EMAIL & REDIRECT TO HOME
 })
-
 app.get("/login", (req, res) => {
   console.log('REQ PARAMS', req.query);
   if (req.query.loginFailed) {
@@ -86,7 +109,6 @@ app.get("/login", (req, res) => {
     res.render('login', {loginFailed: false});
   }
 })
-
 app.post("/login", (req, res) => {
     knex
     .select('email', 'password')
@@ -102,8 +124,6 @@ app.post("/login", (req, res) => {
   console.log('email:', req.body.email);
   console.log('password:', req.body.password);
 })
-
-
 app.get("/menu", (req, res) => {
   res.render('menu');
 })
@@ -117,34 +137,8 @@ app.get('/ordersubmitted', (req, res) => {
   res.render('ordersubmitted')
 })
 
-app.listen(PORT, () => {
+
+app.listen(PORT , ()  => {
+
   console.log("Example app listening on port " + PORT);
 });
-
-
-// app.post("/menu", (req, res) => {
-//
-// })
-
-// app.get("/menu/cart/cart", (req, res) => {
-//   console.log("71")
-
-//   knex("dishes")
-//   .join("order_dishes", "dishes.id" , "=" , "order_dishes.dishes_id")
-//   .join("orders","orders.id", "=", "order_dishes.order_id")
-//   .select('*')
-//     .then((results) => {
-//       res.json(results)
-
-//     })
-//   })
-
-
-// client.messages.create({
-//     body: 'Hello from Node',
-//     to: '+15149665034',  // Text this number
-//     from: '+16475572827' // From a valid Twilio number
-
-// }, function(err, message) {
-//     console.log(message.sid);
-// });
