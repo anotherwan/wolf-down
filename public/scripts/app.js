@@ -38,15 +38,4 @@ $(document).ready(function() {
  $('.clear').on('click', function(){
   $('.reg-form').trigger('reset');
 })
-}) //documentready
-
-//   $('.button').on('click', function() {
-//     $('#sum').addClass("show-me");
-//     .append(sum += parseInt($(this).data("price")));
-//   })
-// })
-// $('#total').addClass("show-me")
-// $('.empty').empty().append(sum)
-// $(this).each(function(){
-//   console.log(sum += $(this).data("price"));
-// })
+})
