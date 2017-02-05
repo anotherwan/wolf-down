@@ -9,12 +9,12 @@
 <div class="row">
   <div class="container">
     <ul class="collapsible popout col s6 m6" data-collapsible="accordion">
-      <% for (let item in results) { %>
+      <% for (let item in dishes) { %>
       <li>
-        <div class="collapsible-header"><%= results[item].dish_name %>
+        <div class="collapsible-header"><%= dishes[item].dish_name %>
         </div>
-        <div class="collapsible-body"><p><%= results[item].dish_description %></p> <p><%= results[item].price %></p>
-          <a class="btn add" data-price=<%= results[item].price %> data-name=<%= results[item].dish_name %> data-items=<%= results[item].id%> action="/menu/cart" >Add</a>
+        <div class="collapsible-body"><p><%= dishes[item].dish_description %></p> <p><%= dishes[item].price %></p>
+          <a class="btn add" data-price=<%= dishes[item].price %> data-name=<%= dishes[item].dish_name %> data-items=<%= dishes[item].id%> action="/menu/cart" >Add</a>
         </div>
       </li>
       <% } %>
@@ -65,5 +65,6 @@
       </div>
     </div>
   </div>
+  <% include ./partials/_footer %>
 </body>
 </html>
