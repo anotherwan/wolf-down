@@ -10,8 +10,8 @@ exports.seed = function(knex, Promise) {
       return Promise.all([
         knex('customers').insert({
           id: 1,
-          full_name: 'Steph Wan',
-          email: 'sw@example.com',
+          full_name: 'Dave Dee',
+          email: 'dd@example.com',
           password: '1234',
           phone_number: '416-333-3333',
           billing_info: 'strip_credit_number'
@@ -28,49 +28,49 @@ exports.seed = function(knex, Promise) {
           return Promise.all([
             knex('dishes').insert({
               id: 1,
-              dish_name: 'spaghetti',
-              dish_description: 'tomato sauce spaghetti with meatballs',
-              price: '9',
-              owner_id: 2
-            }),
-
-            knex('dishes').insert({
-              id: 2,
-              dish_name: 'tacos',
-              dish_description: 'beef tacos',
-              price: '5',
-              owner_id: 2
-            }),
-
-            knex('dishes').insert({
-              id: 3,
-              dish_name: 'gtchicken',
-              dish_description: 'chicken in general tao sauce',
-              price: '9',
-              owner_id: 2
-            }),
-
-            knex('dishes').insert({
-              id: 4,
-              dish_name: 'ramen',
-              dish_description: 'noodles in spicy soup',
+              dish_name: 'Good Enough Burger',
+              dish_description: 'Beef Patty, Havarti, Swiss, Lettuce, Onion, Tomato, a Pickle',
               price: '8',
               owner_id: 2
             }),
 
             knex('dishes').insert({
+              id: 2,
+              dish_name: 'Trendy Hipster Burger',
+              dish_description: 'Beef Patty, Bacon, Brie, Avocado, Green Onion, a Fried Egg',
+              price: '11',
+              owner_id: 2
+            }),
+
+            knex('dishes').insert({
+              id: 3,
+              dish_name: 'Big Boi Burger',
+              dish_description: 'Fried Chicken Patty, Peameal, Cheddar, Fried Onions, Lettuce, BBQ Sauce',
+              price: '12',
+              owner_id: 2
+            }),
+
+            knex('dishes').insert({
+              id: 4,
+              dish_name: 'Swiss Mushy Burger',
+              dish_description: 'Beef Patty, Swiss, Mushrooms, Caramelized Onions, Tomato, Lettuce, a Pickle, Gravy',
+              price: '10',
+              owner_id: 2
+            }),
+
+            knex('dishes').insert({
               id: 5,
-              dish_name: 'crab',
-              dish_description: 'appetizer crab claws',
-              price: '13',
+              dish_name: 'Annihilator',
+              dish_description: 'Double Patty, Double Bacon, Double Cheese, Double Bun',
+              price: '17',
               owner_id: 2
             }),
 
             knex('dishes').insert({
               id: 6,
-              dish_name: 'dessert',
-              dish_description: 'strawberries on oreos',
-              price: '9',
+              dish_name: 'Chicago Blue',
+              dish_description: 'Beef Patty, Blue Cheese, Mushrooms, a Massive Onion Ring',
+              price: '13',
               owner_id: 2
             }),
 
