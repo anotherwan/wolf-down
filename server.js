@@ -8,15 +8,12 @@ const express     = require("express");
 const bodyParser  = require("body-parser");
 const sass        = require("node-sass-middleware");
 
-
 const app         = express();
-
-
 const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
-
+const usersRoutes = require("./routes/users");
 
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
@@ -39,11 +36,11 @@ app.use("/styles", sass({
 app.use(express.static("public"));
 
 // Mount all resource routes
-app.use("/", usersRoutes(knex));
+
 
 // Seperated Routes for each Resource
-const usersRoutes = require("./routes/users");
 
+app.use("/", usersRoutes(knex));
 // Twilio Credentials
 var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
 var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
@@ -54,7 +51,6 @@ var client = new twilio.RestClient(accountSid, authToken);
 app.get("/menu/cart/buy", (req, res) => {
   res.send("purchase")
 })
-
 
 app.post("/menu/cart/buy", (req, res) => {
   console.log("BODY", req.body);
@@ -116,6 +112,10 @@ app.get("/menu/cart", (req, res) => {
 
   res.render('cart');
 });
+
+app.get('/ordersubmitted', (req, res) => {
+  res.render('ordersubmitted')
+})
 
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);

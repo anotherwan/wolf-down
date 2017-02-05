@@ -17,8 +17,7 @@ module.exports = (knex) => {
 
 
 
-  router.get("/menu", (req, res) => {
-
+router.get("/menu", (req, res) => {
     knex
       .select("*")
       .from("dishes")

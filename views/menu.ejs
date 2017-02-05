@@ -8,62 +8,44 @@
 </div>
 <div class="row">
   <div class="container">
-    <ul class="collapsible popout col s6 m6" data-collapsible="accordion">
+    <ul class="collapsible popout col s6 s6" data-collapsible="accordion">
       <% for (let item in results) { %>
       <li>
         <div class="collapsible-header"><%= results[item].dish_name %>
         </div>
         <div class="collapsible-body"><p><%= results[item].dish_description %></p> <p><%= results[item].price %></p>
-          <a class="btn add" data-price=<%= results[item].price %> data-name=<%= results[item].dish_name %> data-items=<%= results[item].id%> action="/menu/cart" >Add</a>
+          <a class="btn add" data-price=<%= results[item].price %> data-name=<%= results[item].dish_name %> data-items=<%= results[item].id%>  data-descrip=<%= results[item].dish_description%>action="/menu/cart" >Add</a>
         </div>
       </li>
       <% } %>
     </ul>
   </div>
 
- <div class="right col s6 m6">
-   <div class="container ">
-      <table class="striped responsive-table bordered centered">
-        <thead>
-          <tr>
-            <th data-field="dish_name">Dish Name</th>
-            <th data-field="dish_price">Dish Price</th>
-            <th data-filed="dish quantity">Dish quantity</th>
-          </tr>
-        </thead>
+ <div class="col s6 s6">
+   <div class="container">
 
-        <tbody>
-          <tr>
-            <td class="cart"></td><!-- Name-->
-            <td class="price">$ </td><!-- $price-->
-            <td class="quantity"> </td><!-- Quantity-->
-          </tr>
-          <tr>
-            <td>dish2</td>
-            <td>dish2 price $ </td>
-            <td>dish2 quantity </td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>Total: $</td>
-          </tr>
-        </tbody>
+   <ul class="title">
+    </ul>
+    <ul class="sub">
+    </ul>
 
-      </table>
+
+        <form id="buy-now" method="POST" action="/menu/cart/buy">
+        <input class="button" name="total-order" type="submit">
+      </form >
+
   </div>
  </div>
+
+
 </div>
 <br>
   <div class="row">
     <div class="container col s12 m12">
-      <form id="buy-now" method="POST" action="/menu/cart/buy">
-        <!-- CART GOES HERE -->
-        <input name="total-order" type="submit">
-        <p class="subtotal" id="total">Total: $<span class="empty"></span> </p>
-      </form >
       </div>
     </div>
   </div>
 </body>
 </html>
+
+
