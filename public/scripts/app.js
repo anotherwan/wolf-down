@@ -38,6 +38,7 @@ $(document).ready(function() {
  $('.clear').on('click', function(){
   $('.reg-form').trigger('reset');
 })
+   $('.parallax').parallax();
 }) //documentready
 
 //   $('.button').on('click', function() {
