@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 //<td class="orange lighten-3">Total Items:            ${quant += 1}</td>
 
-    //$('.title').empty().append(`<ul><li> ${$(this).data("name")} $${$(this).data("price")}</li></ul>`)
+    $('.title').empty().append(`<ul><li> ${$(this).data("name")} $${$(this).data("price")}</li></ul>`)
 
     $('.sub').empty().append(`<li>Total Items: ${quant += 1}</li>
      <li>Total $${sum}</li>

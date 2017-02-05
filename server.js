@@ -120,31 +120,3 @@ app.get('/ordersubmitted', (req, res) => {
 app.listen(PORT, () => {
   console.log("Example app listening on port " + PORT);
 });
-
-
-// app.post("/menu", (req, res) => {
-//
-// })
-
-// app.get("/menu/cart/cart", (req, res) => {
-//   console.log("71")
-
-//   knex("dishes")
-//   .join("order_dishes", "dishes.id" , "=" , "order_dishes.dishes_id")
-//   .join("orders","orders.id", "=", "order_dishes.order_id")
-//   .select('*')
-//     .then((results) => {
-//       res.json(results)
-
-//     })
-//   })
-
-
-// client.messages.create({
-//     body: 'Hello from Node',
-//     to: '+15149665034',  // Text this number
-//     from: '+16475572827' // From a valid Twilio number
-
-// }, function(err, message) {
-//     console.log(message.sid);
-// });
