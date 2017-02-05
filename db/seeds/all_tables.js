@@ -29,7 +29,7 @@ exports.seed = function(knex, Promise) {
             knex('dishes').insert({
               id: 1,
               dish_name: 'Good Enough Burger',
-              dish_description: 'Beef Patty, Havarti, Swiss, Lettuce, Onion, Tomato, a Pickle',
+              dish_description: 'Beef Patty, Havarti, Swiss, Arugula, Tomato, a Pickle',
               price: '8',
               owner_id: 2
             }),
@@ -37,15 +37,15 @@ exports.seed = function(knex, Promise) {
             knex('dishes').insert({
               id: 2,
               dish_name: 'Trendy Hipster Burger',
-              dish_description: 'Beef Patty, Bacon, Brie, Avocado, Green Onion, a Fried Egg',
-              price: '11',
+              dish_description: 'Beef Patty, Peameal, Brie, Avocado, Caramelized Onions, a Fried Egg',
+              price: '14',
               owner_id: 2
             }),
 
             knex('dishes').insert({
               id: 3,
               dish_name: 'Big Boi Burger',
-              dish_description: 'Fried Chicken Patty, Peameal, Cheddar, Fried Onions, Lettuce, BBQ Sauce',
+              dish_description: 'Fried Chicken Patty, White Cheddar, Lettuce, BBQ Mayo Sauce',
               price: '12',
               owner_id: 2
             }),
@@ -53,15 +53,15 @@ exports.seed = function(knex, Promise) {
             knex('dishes').insert({
               id: 4,
               dish_name: 'Swiss Mushy Burger',
-              dish_description: 'Beef Patty, Swiss, Mushrooms, Caramelized Onions, Tomato, Lettuce, a Pickle, Gravy',
-              price: '10',
+              dish_description: 'Beef Patty, Swiss, Mushrooms, Fried Onions, Tomato, Lettuce',
+              price: '11',
               owner_id: 2
             }),
 
             knex('dishes').insert({
               id: 5,
               dish_name: 'Annihilator',
-              dish_description: 'Double Patty, Double Bacon, Double Cheese, Double Bun',
+              dish_description: 'Double Patty, Double Bacon, Double Cheese, Double Bun, Lettuce, Tomato',
               price: '17',
               owner_id: 2
             }),
@@ -69,7 +69,7 @@ exports.seed = function(knex, Promise) {
             knex('dishes').insert({
               id: 6,
               dish_name: 'Chicago Blue',
-              dish_description: 'Beef Patty, Blue Cheese, Mushrooms, a Massive Onion Ring',
+              dish_description: 'Bacon, Double Portobello Patty, Blue Cheese, Swiss Cheese, Buttered Mushrooms, a Massive Onion Ring',
               price: '13',
               owner_id: 2
             }),
