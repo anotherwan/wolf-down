@@ -1,33 +1,7 @@
 body {
   background-color: #fff;
-    nav {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-around;
-    }
-    .parallax-container {
-       height: 400px;
-    .parallax {
-       img {
-        height: 850px;
-      }
-    }
-  }
-}
-
-h2 {
-  text-align: center;
-}
-
-#show {
-  display: block;
-  background-repeat: no-repeat;
 }
 
 .subtotal {
   display: none;
-}
-
-.show-me {
-  display: inline;
 }
