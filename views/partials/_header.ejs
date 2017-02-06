@@ -3,12 +3,22 @@
     <div class="container">
       <div class="nav-wrapper">
         <a href="/" class="valign-wrapper brand-logo left"><i class="material-icons small white-text">view_day</i><bold>Wu̇lfdau̇n</bold></a>
-        <ul class="right">
+        <ul class="right hide-on-med-and-down" id="nav-mobile">
           <li class="active lighten-3"><a href="/menu"><strong>Menu</strong></a></li>
-
+            <% if (email) { %>
+              <li>&nbsp;&nbsp;&nbsp;&nbsp;
+                <li><i class="material-icons small white-text">loyalty</i></li>
+                <li><span class="white-text">&nbsp;&nbsp;<strong>Welcome</strong>, <%= email %>&nbsp;&nbsp;</span></li>
+              </li>
+              <li>
+                <form action="/logout" method ="POST">
+                  <input class="btn-flat tiny white-text waves-effect" type="submit" value="logout">
+                </form>
+              </li>
+            <% } else { %>
               <li class="active lighten-3"><a href="/login"><strong>Login</strong></a></li>
               <li class="active lighten-3"><a href="/register"><strong>Register</strong></a></li>
-
+            <% } %>
         </ul>
       </div>
     </div>
