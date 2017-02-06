@@ -18,6 +18,7 @@ exports.up = function(knex, Promise) {
   }),
   knex.schema.createTable('dishes', function (table) {
     table.increments('id').primary().unsigned();
+    table.text('img_url');
     table.string('dish_name').notNullable();
     table.string('dish_description').notNullable();
     table.float('price').notNullable();

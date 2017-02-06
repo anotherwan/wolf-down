@@ -3,8 +3,9 @@ var quant = 0;
 var quant2 = 0;
 var obj = 0;
 $(document).ready(function() {
+ $('.parallax').parallax();
   var items = [];
- $('.add').on('click', function(ev){
+ $('#add').on('click', function(ev){
     $(this).each(function(){
      console.log(sum += $(this).data("price"));
    })
