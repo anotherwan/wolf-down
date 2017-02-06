@@ -5,18 +5,32 @@ var obj = 0;
 $(document).ready(function() {
  $('.parallax').parallax();
   var items = [];
- $('#add').on('click', function(ev){
+ $('.add').on('click', function(ev){
     $(this).each(function(){
      console.log(sum += $(this).data("price"));
    })
-    //$('.title').empty().append(`<ul><li> ${$(this).data("name")} $${$(this).data("price")}</li></ul>`)
-     // $('.title').empty().append("<p> Item Added To Cart!<p>").fadeIn(2000)
+    // $('#title').empty().append(
+      // `<ul><li> ${$(this).data("name")} $${$(this).data("price")}</li></ul>`)
+    //  $('#title').empty().append("<p> Item Added To Cart!<p>").fadeIn(2000)
 
-    $('.sub').empty().append(`<li>Total Items: ${quant += 1}</li>
-     <li>Total $${sum}</li>
-     <li>13% Sales Tax: $${(sum * 0.13).toFixed(2)}</li>
-     <li class="light-green lighten-2"> Total After Tax: $${(sum + (sum * 0.13)).toFixed(2)}</li>
-     <li><a href="/ordersubmitted">See My Order Status</a></li>
+    $('.sub').empty().append(
+      `<div clas="row">
+        <i class="material-icons small">view_day</i>&nbsp;Total Items:&nbsp;&nbsp; ${quant += 1}
+      </div>
+      <div class="row">
+        <li class="right red-text text-darken-3">Total:&nbsp;&nbsp; $${sum}</li>
+      </div>
+      <div class="row">
+        <li class="right red-text text-darken-3">13% Sales Tax: $${(sum * 0.13).toFixed(2)}</li>
+      </div>
+      <div class="row right">
+        <li class="right"><i class="material-icons small">label</i>&nbsp;Total After Tax: $${(sum + (sum * 0.13)).toFixed(2)}</li>
+      </div>
+      <br>
+      <div class="row">
+        <li class="col offset-m3"><a href="/ordersubmitted">See My Order Status</a>
+        </li>
+      </div>
     `)
 
    clickedItemId = $(this).data("items");
