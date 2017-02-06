@@ -28,6 +28,7 @@ exports.seed = function(knex, Promise) {
           return Promise.all([
             knex('dishes').insert({
               id: 1,
+              img_url: 'images/good_enough_burger.png',
               dish_name: 'Good Enough Burger',
               dish_description: 'Beef Patty, Havarti, Swiss, Arugula, Tomato, a Pickle',
               price: '8',
@@ -36,6 +37,7 @@ exports.seed = function(knex, Promise) {
 
             knex('dishes').insert({
               id: 2,
+              img_url: 'images/trendy_hipster_burger.png',
               dish_name: 'Trendy Hipster Burger',
               dish_description: 'Beef Patty, Peameal, Brie, Avocado, Caramelized Onions, a Fried Egg',
               price: '14',
@@ -44,6 +46,7 @@ exports.seed = function(knex, Promise) {
 
             knex('dishes').insert({
               id: 3,
+              img_url: 'images/big_boi_burger.png',
               dish_name: 'Big Boi Burger',
               dish_description: 'Fried Chicken Patty, White Cheddar, Lettuce, BBQ Mayo Sauce',
               price: '12',
@@ -52,6 +55,7 @@ exports.seed = function(knex, Promise) {
 
             knex('dishes').insert({
               id: 4,
+              img_url: 'images/swiss_mushy_burger.png',
               dish_name: 'Swiss Mushy Burger',
               dish_description: 'Beef Patty, Swiss, Mushrooms, Fried Onions, Tomato, Lettuce',
               price: '11',
@@ -60,6 +64,7 @@ exports.seed = function(knex, Promise) {
 
             knex('dishes').insert({
               id: 5,
+              img_url: 'images/annihilator_burger.png',
               dish_name: 'Annihilator',
               dish_description: 'Double Patty, Double Bacon, Double Cheese, Double Bun, Lettuce, Tomato',
               price: '17',
@@ -68,8 +73,9 @@ exports.seed = function(knex, Promise) {
 
             knex('dishes').insert({
               id: 6,
+              img_url: 'images/chicago_blue_burger.png',
               dish_name: 'Chicago Blue',
-              dish_description: 'Bacon, Double Portobello Patty, Blue Cheese, Swiss Cheese, Buttered Mushrooms, a Massive Onion Ring',
+              dish_description: 'Double Portobello Patty, Blue Cheese, Swiss Cheese, Mushrooms, Sundried Tomatoes, a Massive Onion Ring',
               price: '13',
               owner_id: 2
             }),

@@ -3,18 +3,33 @@
   <% include ./partials/_html_head %>
 <body>
   <% include ./partials/_header %>
-<div class="row">
-  <h2 class="left red-text col offset-m2"> Menu </h2><h2 class="left red-text col offset m8">Cart</h2>
+<br>
+<div class="row valign-wrapper">
+  <h4 class="left red-text text-darken-3 col offset-m2"><i class="material-icons medium red-text text-darken-3">assignment</i></h4><h5 class="red-text text-darken-3">Bob's Burgers</h5>
+  <h4 class="left red-text col offset-m3"><i class="material-icons medium red-text text-darken-3">shopping_cart</i></h4><h5 class="red-text text-darken-3">Cart</h5>
 </div>
 <div class="row">
   <div class="container">
-    <ul class="collapsible popout col s6 m6" data-collapsible="accordion">
+    <ul class="collapsible popout col s6 m6 red-text text-darken-3" data-collapsible="accordion">
       <% for (let item in dishes) { %>
       <li>
-        <div class="collapsible-header"><%= dishes[item].dish_name %>
+        <div class="collapsible-header">
+          <i class="material-icons tiny red-text text-darken-3">view_day</i><strong><%= dishes[item].dish_name %></strong>
         </div>
-        <div class="collapsible-body"><p><%= dishes[item].dish_description %></p> <p><%= dishes[item].price %></p>
-          <a class="btn add" data-price=<%= dishes[item].price %> data-name=<%= dishes[item].dish_name %> data-items=<%= dishes[item].id%> action="/menu/cart" >Add</a>
+        <div class="collapsible-body">
+          <ul class="collection">
+            <li class="collection-item-avatar">
+              <img src="<%= dishes[item].img_url %>" alt="" class="col m7">
+            </li>
+            <li>
+              <div class="row">
+                <p class="title"><%= dishes[item].dish_description %><br><br><%= dishes[item].price %></p>
+              </div>
+            <li class="row col offset-m2">
+              <a class="btn red darken-3" id="add" data-price=<%= dishes[item].price %> data-name=<%= dishes[item].dish_name %> data-items=<%= dishes[item].id%> action="/menu/cart">Add</a>
+            </li>
+            </li>
+          </ul>
         </div>
       </li>
       <% } %>
@@ -23,17 +38,13 @@
 
  <div class="col s6 s6">
    <div class="container">
-
    <ul class="title">
     </ul>
     <ul class="sub">
     </ul>
-
-    
         <form id="buy-now" method="POST" action="/menu/cart/buy">
         <input class="button" name="total-order" type="submit">
-      </form >
-
+      </form>
   </div>
  </div>
 

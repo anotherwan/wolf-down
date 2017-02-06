@@ -4,7 +4,7 @@ var quant2 = 0;
 var obj = 0;
 $(document).ready(function() {
   var items = [];
- $('.add').on('click', function(ev){
+ $('#add').on('click', function(ev){
     $(this).each(function(){
      console.log(sum += $(this).data("price"));
    })
