@@ -107,11 +107,10 @@ app.get("/", (req, res) => {
     .from('customers')
     .where({id: req.session.user_id})
     .then((results) => {
-      // console.log('RESULTSSSSS', results[0]);
     res.render("index", {email: results[0].email})
     })
   } else {
-    // console.log('OTHER RESULT', req.session)
+
   res.render("index", {email: null});
   }
 });
@@ -138,6 +137,7 @@ app.post("/login", (req, res) => {
     .select('id', 'email', 'password')
     .from('customers')
     .then((results) => {
+      console.log('input req.body.email', req.body.email)
       console.log('results:',results);
       if (req.body.email === results[0].email && req.body.password === results[0].password) {
         req.session.user_id = results[0].id
@@ -147,8 +147,8 @@ app.post("/login", (req, res) => {
         res.redirect('/login?loginFailed=true')
       }
     })
-  // console.log('email:', req.body.email);
-  // console.log('password:', req.body.password);
+  console.log('email:', req.body.email);
+  console.log('password:', req.body.password);
 })
 
 app.post('/logout', (req, res) => {
@@ -183,7 +183,7 @@ app.get("/menu", (req, res) => {
 })
 
 app.get('/ordersubmitted', (req, res) => {
-  res.render('ordersubmitted')
+  res.render('ordersubmitted', {email: null})
 })
 
 app.get('/loading', (req, res) => {
