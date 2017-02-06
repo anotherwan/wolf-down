@@ -4,20 +4,20 @@
  <body>
  <% include ./partials/_header %>
  <script>
-  // <!--if (<%= loginFailed %>) {Materialize.toast('Incorrect Login Information', 4000)}-->
+  <!--if (<%= loginFailed %>) {Materialize.toast('Incorrect Login Information', 4000)}-->
  </script>
  <div class="row">
    <div class="col offset-m5">
     <h2 class="red-text text-darken-3"><strong>Login</strong></h2>
    </div>
  </div>
-   <div class="row">
-     <div class="container">
-       <div class="col m8 offset-m2">
-        <form method="POST" action="/login" class="container col s12">
-          <div class="row">
+ <div class="row">
+   <div class="container">
+     <div class="col m8 offset-m2">
+      <form method="POST" action="/login" class="container col s12">
+        <div class="row">
           <div class="red-text text-darken-3 input-field col s12">
-            <input id="email" name="email red-text text-darken-3" type="email" class="validate">
+            <input id="email" name="email" type="email" class="validate">
             <label for="email">Email</label>
           </div>
         </div>
@@ -27,17 +27,17 @@
             <label for="password">Password</label>
           </div>
         </div>
+      <div class="row"></div>
+      <div class="row">
+        <div class="col offset-m5">
+          <input type="submit" class="btn red darken-3" value="submit"></input>
+        </div>
       </div>
+      <div class="row"></div>
+      </form>
     </div>
   </div>
-    <div class="row"></div>
-    <div class="row">
-      <div class="col offset-m5">
-        <input type="submit" class="btn red darken-3" value="submit"></input>
-      </div>
-    </div>
-    <div class="row"></div>
-    </form>
+</div>
   <% include ./partials/_footer %>
  </body>
 </html>
