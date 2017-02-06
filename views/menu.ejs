@@ -16,6 +16,7 @@
         <div class="collapsible-body"><p><%= dishes[item].dish_description %></p> <p><%= dishes[item].price %></p>
           <a class="btn add" data-price=<%= dishes[item].price %> data-name=<%= dishes[item].dish_name %> data-items=<%= dishes[item].id%> action="/menu/cart" >Add</a>
         </div>
+
       </li>
       <% } %>
     </ul>
@@ -27,11 +28,12 @@
    <ul class="title">
     </ul>
     <ul class="sub">
+
     </ul>
 
-    
+
         <form id="buy-now" method="POST" action="/menu/cart/buy">
-        <input class="button" name="total-order" type="submit">
+        <input class="button btn red darken-3" name="total-order" type="submit" value="Checkout">
       </form >
 
   </div>

@@ -14,9 +14,16 @@ const knexConfig  = require("./knexfile");
 const knex        = require("knex")(knexConfig[ENV]);
 const morgan      = require('morgan');
 const knexLogger  = require('knex-logger');
+
 //const usersRoutes = require("./routes/users");
 
 //const usersRoutes = require("./routes/users");
+
+
+var twilio = require('twilio');
+var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
+var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
+var client = new twilio.RestClient(accountSid, authToken);
 
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
@@ -41,17 +48,7 @@ app.use(cookieSession({
   keys: ['key1', 'key']
 }))
 
-// Mount all resource routes
-// app.use("/", usersRoutes(knex));
-
-// Seperated Routes for each Resource
-
-// Twilio Credentials
-// const accountSid = require('.env')
-// const authToken = require('.env')
-
-
-//app.use("/", usersRoutes(knex));
+// Mount all resource usersRoutes
 
 var accountSid = 'ACa16f1d16fc3ba8da7ba9d8ec18aa690b'
 var authToken = 'a1c13cc4655406b94a8d34c2f8deaa65'
@@ -186,6 +183,10 @@ app.get('/ordersubmitted', (req, res) => {
   res.render('ordersubmitted')
 })
 
+app.get('/loading', (req, res) => {
+  res.render('loading')
+
+})
 app.listen(PORT , ()  => {
   console.log("Example app listening on port " + PORT);
 });

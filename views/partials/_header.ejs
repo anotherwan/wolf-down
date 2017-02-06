@@ -5,17 +5,10 @@
         <a href="/" class="valign-wrapper brand-logo left"><i class="material-icons small white-text">view_day</i><bold>Wu̇lfdau̇n</bold></a>
         <ul class="right">
           <li class="active lighten-3"><a href="/menu"><strong>Menu</strong></a></li>
-            <% if (email) { %>
-              <li><span class="white-text">Welcome,  <%= email %>&nbsp;&nbsp;</span></li>
-              <li>
-                <form action="/logout" method ="POST">
-                  <input class="btn white-text red darken-3" type="submit" value="Logout"><strong>Logout</strong>
-                </form>
-              </li>
-            <% } else { %>
+
               <li class="active lighten-3"><a href="/login"><strong>Login</strong></a></li>
               <li class="active lighten-3"><a href="/register"><strong>Register</strong></a></li>
-            <% } %>
+
         </ul>
       </div>
     </div>
